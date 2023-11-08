@@ -2,9 +2,13 @@
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "./Avatar";
-export default function UserMenu() {
+interface IPROPS{
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+ let UserMenu:React.FC<IPROPS>=({showModal,setShowModal})=> {
   const [isOpen, setIsOpen] = useState(false);
-  const currentUser=true
+  const currentUser=false
   const toggleOpen=useCallback(()=>{
     setIsOpen((e)=>!e)
   },[])
@@ -162,6 +166,7 @@ export default function UserMenu() {
 
 
                 <div
+                onClick={()=>setShowModal(true)}
                   className="
                                 px-4 
                                 py-3 
@@ -181,3 +186,4 @@ export default function UserMenu() {
     </div>
   );
 }
+export default UserMenu
